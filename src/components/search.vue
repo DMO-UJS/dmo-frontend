@@ -23,7 +23,7 @@ export default {
     return {
       searchText: '',
       searchAnswer: '',
-      searchUrl: 'https://www.xuyuhan.club/test',
+      searchUrl: 'http://127.0.0.1:5000/test',
       programs: [],
     }
   },
@@ -34,11 +34,11 @@ export default {
     	let message = {
     		text: this.searchText
     	}
-    	
-      this.$http.get(this.searchUrl)
+      console.log(typeof message)
+      this.$http.post(this.searchUrl, message)
          .then((response) => {
          		 console.log(response.data)
-         			this.programs = response.data.slice(1)
+         			this.programs = response.data
          		
          }, (response) => {
          	// error
